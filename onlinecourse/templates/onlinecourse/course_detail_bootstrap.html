@@ -83,7 +83,7 @@
                             <!-- Get course questions -->
                             {% for question in course.get_questions %}
                             <div class="card mt-1">
-                                <div class="card-header"><h5>{{ question.question_text}}</h5></div>
+                                <div class="card-header"><h5>{{ question.question_text}} ({{question.mark}} pts)</h5></div>
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <!-- Get question choices -->
@@ -100,7 +100,9 @@
                             </div>
                         {% endfor %}
                         
+                        {% if course.get_questions %}
                         <input class="btn btn-success btn-block" type="submit" value="Submit">
+                        {% endif %}
                         </form>
 
                       </div>
