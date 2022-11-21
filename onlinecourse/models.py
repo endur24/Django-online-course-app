@@ -78,11 +78,19 @@ class Course(models.Model):
     #This function returns the total score for all the questions in this course
     @property
     def get_total_score(self):
-        return Question.objects.filter(lesson__course = self).aggregate(Sum('mark'))['mark__sum']
+        questions = Question.objects.filter(lesson__course = self)
+        if questions:
+            total_score = questions.aggregate(Sum('mark'))['mark__sum']
+        else:
+            total_score = 0
+        return total_score
 
     @property
     def get_pass_score(self):
-        return int(self.get_total_score/2)
+        total_score = self.get_total_score
+        if not total_score:
+            total_score = 0
+        return int(total_score/2)
 
 
 # Lesson model
