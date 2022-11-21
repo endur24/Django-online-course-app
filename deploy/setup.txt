@@ -1,0 +1,46 @@
+## Tutorial
+https://ritiktaneja.medium.com/configuring-asgi-django-application-using-daphne-and-nginx-server-59a90456fe17
+
+
+
+## 
+vim /etc/systemd/system/edx.service
+
+## Press I and paste the follow
+
+########################################
+
+[Unit]
+Description=Django-online-course-app Daphne Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/webapps/Django-online-course-app/myproject
+ExecStart=/webapps/Django-online-course-app/bin/daphne -b 0.0.0.0 -p 9001 myproject.asgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+###########################################
+
+## Enable autostart on boot
+sudo systemctl enable edx
+
+
+## start now
+sudo systemctl start edx
+
+## Status of service
+systemctl status edx
+
+## Disable autostart on boot
+sudo systemctl disable edx
+
+## View Logs
+#Live logs
+tail -f /var/log/syslog
+
+#Last x lines in system log file
+tail -n 10 /var/log/syslog

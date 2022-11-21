@@ -1,0 +1,12 @@
+[Unit]
+Description=nkkap Daphne Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/webapps/nkkap/nkkap
+ExecStart=/webapps/nkkap/bin/daphne -b 0.0.0.0 -p 9001 nkkap.asgi:application
+
+[Install]
+WantedBy=multi-user.target

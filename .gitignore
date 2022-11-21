@@ -71,6 +71,10 @@ file_uploads/
 **/CACHE/js
 manifest.json
 pass.json
+install.txt
+bin/
+include/
+lib/
 
 # Flask stuff:
 instance/
