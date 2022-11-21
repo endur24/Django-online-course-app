@@ -66,6 +66,8 @@
                 <h2>Exams</h2>
                 {% if user.is_authenticated %}
                 <p><strong>Note:</strong> This is a multiple choice exam.</p>
+                <br>
+                <p>Pass score is 50%</p>
                 <div id="accordion">
 
                   <div class="card">
@@ -76,9 +78,6 @@
                     </div>
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                       <div class="card-body">
-
-                        
-                        
 
                         <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post">
                             <!-- Get course questions -->

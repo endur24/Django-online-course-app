@@ -7,6 +7,7 @@ except Exception:
     sys.exit()
 
 from django.conf import settings
+from django.db.models import Sum
 import uuid
 
 
@@ -72,6 +73,12 @@ class Course(models.Model):
     @property
     def get_questions(self):
         return Question.objects.filter(lesson__course = self)
+
+    
+    #This function returns the total score for all the questions in this course
+    @property
+    def get_total_score(self):
+        return Question.objects.filter(lesson__course = self).aggregate(Sum('mark'))['mark__sum']
 
 
 # Lesson model
