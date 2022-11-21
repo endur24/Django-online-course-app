@@ -80,6 +80,10 @@ class Course(models.Model):
     def get_total_score(self):
         return Question.objects.filter(lesson__course = self).aggregate(Sum('mark'))['mark__sum']
 
+    @property
+    def get_pass_score(self):
+        return int(self.get_total_score/2)
+
 
 # Lesson model
 class Lesson(models.Model):

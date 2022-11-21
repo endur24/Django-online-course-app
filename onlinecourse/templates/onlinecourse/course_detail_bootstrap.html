@@ -66,8 +66,8 @@
                 <h2>Exams</h2>
                 {% if user.is_authenticated %}
                 <p><strong>Note:</strong> This is a multiple choice exam.</p>
-                <br>
-                <p>Pass score is 50%</p>
+                <p>Total score is {{course.get_total_score}}</p>
+                <p>Pass score is {{course.get_pass_score}}(50%)</p>
                 <div id="accordion">
 
                   <div class="card">
