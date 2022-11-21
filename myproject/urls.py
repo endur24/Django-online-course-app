@@ -18,7 +18,10 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 
+from onlinecourse.views import CourseListView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('onlinecourse/', include('onlinecourse.urls')),
+    path(route='', view=CourseListView.as_view(), name='index'), #Show courses list on landing page
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
