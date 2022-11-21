@@ -17,7 +17,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/webapps/Django-online-course-app/myproject
+WorkingDirectory=/webapps/Django-online-course-app
 ExecStart=/webapps/Django-online-course-app/bin/daphne -b 0.0.0.0 -p 9001 myproject.asgi:application
 
 [Install]
